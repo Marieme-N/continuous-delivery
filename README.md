@@ -109,7 +109,7 @@ docker pull <registry_name>/<github_username>/<repository_name>/<image_name>:<im
 ```yml
   - "traefik.enable=true"
   - "traefik.docker.network=web"
-  - "traefik.frontend.rule=Host:groupe-XX.arla-sigl.fr"
+  - "traefik.frontend.rule=Host:groupeXX.arla-sigl.fr"
   - "traefik.frontend.port=80"
 ```
 - You also need to make sure you run your container in the same `docker network` as Traefik: `web`
@@ -121,7 +121,7 @@ So your command to run the container will look like:
   docker run -d --name arlaide --network web --label traefik.enable=true [...] <docker_image_name>
 ```
 
-You should be able to see your page live once again at the address: http://groupe-XX.arla-sigl.fr
+You should be able to see your page live once again at the address: http://groupeXX.arla-sigl.fr
 
 If so, you've just deploy a containerized web application, congrats!
 
@@ -204,7 +204,7 @@ You will add those secret variables:
 ```yml
 DOCKER_USER=<your_github_username>
 DOCKER_PASSWORD=<your_github_PAT>
-SSH_HOST=groupe-XX.arla-sigl.fr
+SSH_HOST=groupeXX.arla-sigl.fr
 SSH_USER=sigl
 SSH_KEY=<private_key_from_previous_workshop>
 ```
@@ -321,5 +321,5 @@ In order to have a nice functionnal CD that works on every run, you should add t
     docker run ...
 ```
 
-Once this is done, try out to push different versions of your `index.html` on master and this should continously deliver the new version on `http://groupe-XX>arla-sigl.fr` !
+Once this is done, try out to push different versions of your `index.html` on master and this should continously deliver the new version on `http://groupeXX.arla-sigl.fr` !
 
