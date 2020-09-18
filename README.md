@@ -83,11 +83,12 @@ This means, you will need to build your docker image with a specific tag like:
 ```
 docker build -t <registry_name>/<github_username>/<repository_name>/<image_name>:<image_tag> .
 ```
-The `registry_name` needs to be `docker.pkg.github.com`
-The `github_username` needs to be the one who created the repository
-The `repository_name` will be the name of your project on github, something like `arla-group-XX`
-The `image_name` could be `arlaide`, since this is the name of the app, but you are free to chose any valid image name.
-The `image_tag` could be `v1` since it's  the first version of arlaide. Once again, you're free to use any valid image tag.
+
+- The `registry_name` needs to be `docker.pkg.github.com`
+- The `github_username` needs to be the one who created the repository
+- The `repository_name` will be the name of your project on github, something like `arla-group-XX`
+- The `image_name` could be `arlaide`, since this is the name of the app, but you are free to chose any valid image name.
+- The `image_tag` could be `v1` since it's  the first version of arlaide. Once again, you're free to use any valid image tag.
 
 Once it is build, to publish your image, you just have to push the freshly created image using `docker push` command:
 ```
@@ -174,7 +175,7 @@ master!
 
 #### Step 4.2: Configuring your workflow
 
-Before we start, make sure you understood the previous step. Read again this
+Before you start, make sure you understood the previous step. Read again this
 `main.yml` file with comments to understand the structure.
 
 To roughly sum up, a workflow is composed of:
@@ -188,11 +189,6 @@ To roughly sum up, a workflow is composed of:
     `ubuntu-latest`
 
 Let's configure our workflow.
-
-We have 3 steps to deploy:
-- build the docker image
-- publish the docker image
-- run our docker image (on our production VM)
 
 Before starting building steps, we will add several secret variables.
 
@@ -216,9 +212,15 @@ SSH_KEY=<private_key_from_previous_workshop>
 Your secrets section should look like this
 ![secrets-variables](images/secret-variables.png)
 
+
+Now that we are all set, we have modify our workflow to:
+- build the docker image
+- publish the docker image
+- run our docker image (on our production VM)
+
 ##### Build step
 
-From our local machine, you used `docker build` command.
+From your local machine, you used `docker build` command.
 
 Fortunately, the `ubuntu-latest` system on which our `steps` are running do have
 docker installed and git by default.
